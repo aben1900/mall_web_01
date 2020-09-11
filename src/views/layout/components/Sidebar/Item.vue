@@ -12,33 +12,21 @@ export default {
     }
   },
   render(h, context) {
-    const {icon, title} = context.props
+    const { icon, title } = context.props
     const vnodes = []
 
     if (icon) {
-      if (typeof icon === 'string') {
-        // eslint-disable-next-line
-        vnodes.push(< svg - icon
-      icon - class = {icon}
-      />)
+      if (icon.includes('el-icon')) {
+        vnodes.push(<i class={[icon, 'sub-el-icon']} />)
       } else {
-        // eslint-disable-next-line
-        vnodes.push(< svg - icon
-      icon - class = 'people' / >
-      )
-        // vnodes.push(<svg viewBox={icon.viewBox}><use xlinkHref={'#' + icon.id}/></svg>)
+        vnodes.push(<svg-icon icon-class={icon}/>)
       }
-      }
+    }
 
-      if (title) {
-      vnodes.push( <
-        span
-        slot = 'title' > {(title)
-      }
-        <
-          /span>)
-          }
-          return vnodes
-          }
+    if (title) {
+      vnodes.push(<span slot='title'>{(title)}</span>)
+    }
+    return vnodes
+  }
 }
 </script>
